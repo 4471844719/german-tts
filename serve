@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Starts tts_server.py inside the venv of the chosen backend.
+#   ./serve --clone voices/meine_stimme.wav [--gpu 0,1] [--port 8887] [--api-key KEY]
+#   ./serve -b chatterbox --clone voices/meine_stimme.wav
+DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+backend=${TTS_BACKEND:-}
+if [[ -z $backend ]]; then
+  [[ -d "$DIR/.venv-fastqwen" ]] && backend=fastqwen || backend=qwen
+fi
+args=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -b|--backend) backend=$2; shift 2 ;;
+    *) args+=("$1"); shift ;;
+  esac
+done
+py="$DIR/.venv-$backend/bin/python"
+[[ -x $py ]] || { echo "Backend '$backend' not installed: run $DIR/setup_gpu.sh $backend" >&2; exit 1; }
+has_gpu=0; for x in "${args[@]}"; do [[ $x == --gpu ]] && has_gpu=1; done
+[[ $has_gpu == 0 && -n ${TTS_GPU:-} ]] && args+=(--gpu "$TTS_GPU")
+cd "$DIR"
+exec "$py" "$DIR/tts_server.py" -b "$backend" "${args[@]}"

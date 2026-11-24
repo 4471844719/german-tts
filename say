@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Runs tts_gpu.py inside the venv of the chosen backend.
+#   ./say [-b fastqwen|qwen|chatterbox|xtts] [options] "Text"
+# Default backend can be set with TTS_BACKEND=chatterbox, default GPU with TTS_GPU=1.
+DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+backend=${TTS_BACKEND:-}
+if [[ -z $backend ]]; then   # prefer the fast engine when installed
+  [[ -d "$DIR/.venv-fastqwen" ]] && backend=fastqwen || backend=qwen
+fi
+args=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -b|--backend) backend=$2; shift 2 ;;
+    *) args+=("$1"); shift ;;
+  esac
+done
+py="$DIR/.venv-$backend/bin/python"
+[[ -x $py ]] || { echo "Backend '$backend' not installed: run $DIR/setup_gpu.sh $backend" >&2; exit 1; }
+has_gpu=0; for x in "${args[@]}"; do [[ $x == --gpu ]] && has_gpu=1; done
+[[ $has_gpu == 0 && -n ${TTS_GPU:-} ]] && args+=(--gpu "$TTS_GPU")
+exec "$py" "$DIR/tts_gpu.py" -b "$backend" "${args[@]}"

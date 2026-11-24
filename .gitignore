@@ -1,0 +1,27 @@
+# Python environments (created by setup.sh / setup_gpu.sh, several GB each)
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+
+# Voices: personal recordings and downloaded/generated references.
+# Recreate them with record_voice.sh / get_stock_voice.py.
+# Do NOT commit other people's voice recordings without their consent.
+voices/*
+!voices/.gitkeep
+
+# Piper ONNX voice models (downloaded by setup.sh)
+*.onnx
+*.onnx.json
+
+# Generated audio
+*.wav
+*.mp3
+!examples/*.wav
+!examples/*.mp3
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

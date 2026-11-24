@@ -1,0 +1,17 @@
+Willkommen in der faszinierenden Welt der Synchrotrons!
+
+Ein Synchrotron ist eine hochkomplexe Teilchenbeschleunigeranlage,
+in der elektrisch geladene Teilchen, beispielsweise Elektronen oder Protonen, auf nahezu Lichtgeschwindigkeit beschleunigt werden.
+
+Doch wie funktioniert das eigentlich?
+
+Zunächst werden die Teilchen in einer speziellen Quelle erzeugt und anschließend in einen Beschleunigerring eingespeist.
+
+Mithilfe leistungsstarker Elektromagnete werden sie auf einer kreisförmigen Bahn gehalten. Hochfrequente elektrische Felder sorgen dafür, dass die Teilchen immer mehr Energie aufnehmen.
+
+Besonders spannend wird es, wenn Elektronen durch Magnetfelder auf eine gekrümmte Bahn gelenkt werden. Dabei entsteht sogenannte Synchrotronstrahlung.
+
+Diese elektromagnetische Strahlung ist extrem intensiv und kann von Infrarotlicht über sichtbares Licht bis hin zu hochenergetischer Röntgenstrahlung reichen.
+
+Wissenschaftlerinnen und Wissenschaftler nutzen diese Strahlung,
+um die Struktur unterschiedlichster Materialien zu untersuchen.

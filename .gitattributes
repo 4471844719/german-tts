@@ -1,0 +1,5 @@
+# keep shell scripts with Unix line endings, even if edited on Windows
+*.sh   text eol=lf
+say    text eol=lf
+serve  text eol=lf
+*.py   text eol=lf
